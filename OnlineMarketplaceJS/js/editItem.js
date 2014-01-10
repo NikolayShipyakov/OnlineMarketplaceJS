@@ -3,9 +3,9 @@ var save = function(){
     var item = getItem();
     var errors = Model.checkItem(item);
     if(errors.length == 0){
-      Model.insertItem(item);
+      //Model.insertItem(item);
     } else {
-
+        showErrors(errors);
     }
 
 };
@@ -23,7 +23,13 @@ var getItem = function(){
     }
 };
 
-var showErrors = function(errors){
 
+
+var showErrors = function(errors){
+     var warningText = "";
+     for(var i = 0; i < errors.length; i++){
+         warningText += errors[i] + "</br>"
+     }
+     document.getElementById("resultop").innerHTML = warningText;
 };
 
