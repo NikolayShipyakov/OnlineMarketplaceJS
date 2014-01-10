@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<title>Edit item</title>
+<link rel="stylesheet" type="text/css" href="../css/editItem.css" />
+<script type="text/javascript" src="../js/model.js"></script>
+<script type="text/javascript" src="../js/editItem.js"></script>
+<script type="text/javascript" src="../js/constants.js"></script>
+</head>
+<body>
+	<div class="head">
+		<label class="label">Online marketplace. Edit item</label>
+	</div>
+	<form id="dataForm" method="get" action="showItems.html">
+		<div class="size">
+			<div>
+				<label>Title of item:</label> <input id="title" name="title"
+					type="text" />
+			</div>
+
+			<div>
+				<label>Description:</label>
+				<textarea id="description" name="description" cols="33" rows="3"></textarea>
+			</div>
+
+			<div>
+				<label>Start price:</label> <input id="startprice" name="startprice"
+					type="text" />
+			</div>
+
+			<div>
+				<label>Bid increment:</label> <input id="bidincrement"
+					name="bidincrement" type="text" />
+			</div>
+
+			<div>
+				<label>Time left:</label> <input id="timeleft" name="timeleft"
+					type="text" />
+			</div>
+
+			<div>
+				<label>Buy it now:</label> <input id="buyitnow" name="buyitnow"
+					type="checkbox" onclick="buyCheck()" />
+			</div>
+		</div>
+	</form>
+	<div class="buttons">
+		<input id="save" type="button" value="Publish/Save" onclick="save()" /><input
+			class="margenleft" id="reset" type="button" value="Reset"
+			onclick="reset()" /><input id="back" class="margenleft"
+			type="button" value="Back" onclick="back()" />
+	</div>
+	<div class="buttons">
+		<span id="resultop"></span>
+	</div>
+</body>
+</html>

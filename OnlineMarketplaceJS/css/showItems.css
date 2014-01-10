@@ -1,0 +1,176 @@
+body {
+	margin: 0px;
+	width: 100%;
+}
+
+div.welcom {
+	margin-left: 20px;
+	margin-right: 20px;
+	text-align: right;
+}
+
+div.welcom a {
+	margin-left: 10px;
+	float: right;
+}
+
+label.welcom {
+	color: #146EB4;
+}
+
+label.user {
+	color: #191970;
+}
+
+div.head {
+	margin-top: 20px;
+}
+
+div.head label {
+	margin-left: 20px;
+	font-size: 20px;
+	color: #146EB4;
+	font-family: serif;
+}
+
+div.search {
+	margin-top: 30px;
+}
+
+label.parameters {
+	margin-left: 100px;
+}
+
+label.keyword {
+	margin-left: 110px;
+}
+
+div.buttonssearch {
+	margin-top: 5px;
+}
+
+input.textsearch {
+	margin-left: 110px;
+}
+
+select.typesearch {
+	width: 100px;
+}
+
+div.links {
+	margin-top: 30px;
+	margin-left: 10px;
+}
+
+div.links a {
+	margin-left: 10px;
+}
+
+div.table {
+	margin-top: 30px;
+	margin-left: 20px;
+	margin-right: 20px;
+}
+
+div.aftertable {
+	background-color: #146EB4;
+}
+
+div.table label {
+	color: white;
+}
+
+div.table table {
+	border: solid;
+	border-style: solid;
+	border-color: gray;
+	background-color: gray;
+	width: 100%;
+}
+
+div.table tr.head {
+	background-color: silver;
+	height: auto;
+}
+
+div.table tr.head:hover {
+	cursor: pointer;
+}
+
+div.table img {
+	width: 10px;
+	height: 10px;
+	margin-left: 10px;
+}
+
+tr {
+	background-color: white;
+	height: auto;
+}
+
+.uid {
+	width: 25px;
+	text-align: right;
+}
+
+.seller {
+	width: 100px;
+}
+
+th.price {
+	width: 80px;
+}
+
+td.price {
+	width: 80px;
+	text-align: right;
+}
+
+th.increment {
+	width: 50px;
+}
+
+td.increment {
+	width: 50px;
+	text-align: right;
+}
+
+th.bestoffer {
+	width: 90px;
+}
+
+td.bestoffer {
+	width: 90px;
+	text-align: right;
+}
+
+.bidder {
+	width: 100px;
+}
+
+.date {
+	width: 80px;
+}
+
+.bidding {
+	width: 150px;
+}
+
+.buybutton {
+	margin-left: 25px;
+	width: 100px;
+}
+
+.biddiv {
+	background-color: white;
+}
+
+div.table table input[type="text"] {
+	margin-left: 10px;
+	width: 55px;
+}
+
+.bidbutton {
+	margin-left: 20px;
+	width: 55px;
+}
