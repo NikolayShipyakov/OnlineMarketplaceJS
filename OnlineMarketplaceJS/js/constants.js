@@ -6,5 +6,7 @@ var Constants = {
     incorrectPrice: "Incorrect format of the price.",
     incorrectIncr: "Incorrect format of the bid increment.",
     incorrectTime: "Incorrect format of the time left.",
-    normalResult: "Item are added."
+    normalResult: "Item are added.",
+    passwordLength : 2,
+    loginLength : 1
 };
