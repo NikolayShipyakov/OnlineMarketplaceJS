@@ -11,6 +11,14 @@ var validUserData = function(){
     }
 };
 
+var reset = function(){
+    clearAllFields();
+};
+
+function back() {
+    window.location = "login.html";
+}
+
 //View
 var getUserData = function(){
     var name = document.getElementById("name").value;
@@ -35,5 +43,15 @@ var showErrorRegistration = function(errors){
         warningText += errors[i] + "</br>";
     }
     document.getElementById("warningtext").innerHTML = warningText;
+};
+
+var clearAllFields = function(){
+    document.getElementById("name").value = "";
+    document.getElementById("adress").value = "";
+    document.getElementById("phone").value = "";
+    document.getElementById("login").value = "";
+    document.getElementById("password").value = "";
+    document.getElementById("repassword").value = "";
+    document.getElementById("phone").value = "(xxx)xxx-xx-xx";
 };
 
