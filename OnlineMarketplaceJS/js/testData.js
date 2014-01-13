@@ -7,7 +7,7 @@ var testData = [
         StartPrice: 13.5,
         BinInc:0.5,
         BestOffer:0,
-        Bidder:"Mr. Pitt",
+        Bidder:"Pitt",
         TimeLeft:"21.05.2012",
         BuyNow:false
     },
@@ -20,7 +20,20 @@ var testData = [
         StartPrice: 13.5,
         BinInc:0.5,
         BestOffer:1,
-        Bidder:"Mr. Pitt",
+        Bidder:"Pup",
+        TimeLeft:"21.05.2013",
+        BuyNow:false
+    },
+
+    {
+        UID:3,
+        Title: "The Lord of the Rings Trilogy",
+        Description: "Book",
+        Seller:"Pup",
+        StartPrice: 13.5,
+        BinInc:0.5,
+        BestOffer:4,
+        Bidder:"Pitt",
         TimeLeft:"21.05.2013",
         BuyNow:false
     }
@@ -32,4 +45,12 @@ var setTestData = function(){
    }
 };
 
-setTestData();
+var setUserItemsTestData = function(){
+    var login = User.getUserLogin();
+    for(var i = 0; i < testData.length; i++){
+        if(testData[i].Seller == login || testData[i].Bidder == login){
+            Model.insertItem(testData[i]);
+        }
+    }
+};
+

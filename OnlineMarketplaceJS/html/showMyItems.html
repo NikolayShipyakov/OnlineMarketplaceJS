@@ -4,19 +4,20 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 <title>Show my items</title>
-<link rel="stylesheet" type="text/css" href="css/showMyItems.css" />
-<script type="text/javascript" src="js/Item.js"></script>
-<script type="text/javascript" src="js/Bid.js"></script>
-<script type="text/javascript" src="js/showMyItemsListeners.js"></script>
-<script type="text/javascript" src="js/functions.js"></script>
-<script type="text/javascript" src="js/datas.js"></script>
+<link rel="stylesheet" type="text/css" href="../css/showMyItems.css" />
+<script type="text/javascript" src="../js/user.js"></script>
+<script type="text/javascript" src="../js/model.js"></script>
+<script type="text/javascript" src="../js/showMyItems.js"></script>
+<script type="text/javascript" src="../js/sort.js"></script>
+<script type="text/javascript" src="../js/testData.js"></script>
+<script type="text/javascript" src="../js/constants.js"></script>
 </head>
-<body onload="load()">
+<body onload="onLoad()">
 
 	<div class="welcom">
 		<div>
 			<label class="welcom">You are logged in as : </label><label id="user"
-				class="user">Guest</label><a id="log" href="login.html" onclick="logout()">logout</a>
+				class="user"></label><a id="log" href="login.html" onclick="logout()">logout</a>
 		</div>
 	</div>
 
@@ -35,16 +36,16 @@
 			<tbody id="items">
 				<tr class="head">
 					<th class="uid">UID</th>
-					<th onclick="fillTitle();">Title<img id="imgTitle"
-						src="imgs/updown.png" alt="sort"/> <input id="titleSort" type="hidden"
+					<th onclick="sortTitle();">Title<img id="imgTitle"
+						src="../imgs/updown.png" alt="sort"/> <input id="sortTitle" type="hidden"
 						value="updown" />
 					</th>
 					<th>Description</th>
 					<th class="seller">Seller</th>
 					<th class="price">Start Price</th>
 					<th class="increment">Bid inc</th>
-					<th class="bestoffer" onclick="fillBestOffer();">Best offer<img
-						id="imgOffer" src="imgs/updown.png" alt="sort"/><input id="offerSort"
+					<th class="bestoffer" onclick="sortBestOffer();">Best offer<img
+						id="imgOffer" src="../imgs/updown.png" alt="sort"/><input id="offerSort"
 						type="hidden" value="updown" />
 					</th>
 					<th class="bidder">Bidder</th>

@@ -6,24 +6,19 @@ var offerImg;
 
 //Controller
 var onLoad = function(){
-  setTestData();//Заполнение тестовыми данными
-  initView();
-  getAllItems();
-  checkUser();
+    setUserItemsTestData();//Заполнение тестовыми данными
+    checkUser();
+    initView();
+    getAllItems();
 };
 
-var sortTitle = function(){
-  clearTable();
-  var order = getTypeTitleSort();
-  Model.sortItemsByTitle(order);
-  showItems();
-};
-
-var sortBestOffer = function(){
-  clearTable();
-  var order = getTypeOfferSort();
-  Model.sortItemsByBestOffer(order);
-  showItems();
+var checkUser = function(){
+    var login = User.getUserLogin();
+    if((login != null) && (login != "")){
+        setUserName(login);
+    } else {
+        window.location.href = "login.html";
+    }
 };
 
 var getAllItems = function(){
@@ -33,15 +28,32 @@ var getAllItems = function(){
     Model.getItems(func);
 };
 
-var checkUser = function(){
-    var login = User.getUserLogin();
-    if((login != null) && (login != "")){
-        setUserName(login);
-    } else {
-        setGuestUserParameters();
-    }
+var sortTitle = function(){
+    clearTable();
+    var order = getTypeTitleSort();
+    Model.sortItemsByTitle(order);
+    showItems();
 };
 
+var sortBestOffer = function(){
+    clearTable();
+    var order = getTypeOfferSort();
+    Model.sortItemsByBestOffer(order);
+    showItems();
+};
+
+//View
+var initView = function(){
+    tbody = document.getElementById("items");
+    sortTitleElement = document.getElementById("sortTitle");
+    sortOfferElement = document.getElementById("offerSort");
+    titleImg = document.getElementById("imgTitle");
+    offerImg = document.getElementById("imgOffer");
+};
+
+var setUserName = function(userName){
+    document.getElementById("user").innerHTML = userName;
+};
 
 //View
 var showItems = function () {
@@ -90,29 +102,6 @@ var addItem = function(item){
     td = document.createElement('TD');
     td.innerHTML = item.TimeLeft;
     tr.appendChild(td);
-
-    td = document.createElement('TD');
-    tr.appendChild(td);
-};
-
-var setUserName = function(userName){
-    document.getElementById("user").innerHTML = userName;
-};
-
-var setGuestUserParameters = function(){
-    document.getElementById("myitems").hidden = true;
-    document.getElementById("sell").hidden = true;
-    var log = document.getElementById("log");
-    log.innerHTML = "login";
-    log.href = "login.html";
-};
-
-var initView = function(){
-    tbody = document.getElementById("items");
-    sortTitleElement = document.getElementById("titleSort");
-    sortOfferElement = document.getElementById("offerSort");
-    titleImg = document.getElementById("imgTitle");
-    offerImg = document.getElementById("imgOffer");
 };
 
 var clearTable = function() {
@@ -122,5 +111,3 @@ var clearTable = function() {
         table.removeChild(rows[i]);
     }
 };
-
-
