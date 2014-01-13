@@ -4,6 +4,27 @@ var sortOfferElement;
 var titleImg;
 var offerImg;
 
+var getXmlHttp = function () {
+    var xmlhttp;
+    if (window.XMLHttpRequest)
+    {// code for IE7+, Firefox, Chrome, Opera, Safari
+        xmlhttp=new XMLHttpRequest();
+    }
+    else
+    {// code for IE6, IE5
+        xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+    }
+    xmlhttp.onreadystatechange=function()
+    {
+        if (xmlhttp.readyState==4 && xmlhttp.status==200)
+        {
+            document.getElementById("myDiv").innerHTML=xmlhttp.responseText;
+        }
+    };
+    return xmlhttp;
+};
+
+
 //Controller
 var onLoad = function(){
   setTestData();//Заполнение тестовыми данными
@@ -43,11 +64,20 @@ var checkUser = function(){
 };
 
 function buy(uid, max) {
-    var result = false;
     var bidElement = document.getElementById("bid" + uid);
     var bid = Number(bidElement.value);
     if (bid >= max) {
-        result = true;
+        var req = getXmlHttp();
+        req.onreadystatechange = function () {
+            if (req.readyState == 4) {
+                if (req.status == 200) {
+                    alert("Ответ сервера: " + req.responseText);
+
+                }
+            }
+        };
+        req.open('POST', 'http:\\lala?' + uid + "&price" + bid, true);
+        req.send();
     } else {
         if (isNaN(bid)) {
             alert(Constants.incorrectOfferType);
@@ -55,7 +85,6 @@ function buy(uid, max) {
             alert(Constants.smallOffer + " " + max);
         }
     }
-    return result;
 }
 
 
@@ -113,9 +142,7 @@ var addItem = function(item){
 };
 
 function getBidding(item) {
-    var form = document.createElement("form");
-    form.method = "get";
-    form.action = "#";
+    var form = document.createElement("div");
     var hidden = document.createElement("input");
     hidden.type = "hidden";
     hidden.name = "id";
@@ -123,7 +150,7 @@ function getBidding(item) {
     form.appendChild(hidden);
     var element;
     var button = document.createElement("input");
-    button.type = "submit";
+    button.type = "button";
     if (item.BuyNow) {
         element = button;
         element.className = "buybutton";
@@ -140,8 +167,8 @@ function getBidding(item) {
         bid.type = "text";
         element.appendChild(bid);
         button.className = "bidbutton";
-        form.onsubmit = function() {
-            return buy(item.UID, maxPrice(item));
+        button.onclick = function() {
+            buy(item.UID, maxPrice(item));
         };
         button.value = "Bid";
         element.appendChild(button);
