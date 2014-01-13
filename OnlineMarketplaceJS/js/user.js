@@ -14,10 +14,10 @@ var User = {
         var notNullLogin = (login.length >= Constants.loginLength) ? true : false;
         var notNullPassword = (password.length >= Constants.passwordLength) ? true : false;
         if(!notNullLogin){
-            errors.push("The minimum length of Login is"+Constants.loginLength);
+            errors.push("The minimum length of Login is"+ Constants.loginLength);
         }
         if(!notNullPassword){
-            errors.push("The minimum length of Password is "+passwordLength);
+            errors.push("The minimum length of Password is "+ Constants.passwordLength);
         }
         return errors;
     }

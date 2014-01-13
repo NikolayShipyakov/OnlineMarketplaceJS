@@ -4,6 +4,7 @@ var tbody;
 var onLoad = function(){
   initView();
   getAllItems();
+  checkUser();
 };
 
 var getAllItems = function(){
@@ -11,6 +12,15 @@ var getAllItems = function(){
         showItems();
     };
     Model.getItems(func);
+};
+
+var checkUser = function(){
+    var login = User.getUserLogin();
+    if((login != null) && (login != "")){
+        setUserName(login);
+    } else {
+        setGuestUserParameters();
+    }
 };
 
 
@@ -64,6 +74,18 @@ var addItem = function(item){
 
     td = document.createElement('TD');
     tr.appendChild(td);
+};
+
+var setUserName = function(userName){
+    document.getElementById("user").innerHTML = userName;
+};
+
+var setGuestUserParameters = function(){
+    document.getElementById("myitems").hidden = true;
+    document.getElementById("sell").hidden = true;
+    var log = document.getElementById("log");
+    log.innerHTML = "login";
+    log.href = "login.html";
 };
 
 var initView = function(){
