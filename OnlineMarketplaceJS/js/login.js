@@ -10,6 +10,10 @@ var sign = function(){
     }
 };
 
+var submit = function (){
+    document.getElementById("registrationForm").submit();
+};
+
 //View
 var getLoginPassword = function(){
     var login = document.getElementById("login").value;
@@ -18,10 +22,6 @@ var getLoginPassword = function(){
         login:login,
         password:pass
     }
-};
-
-var submit = function (){
-    document.getElementById("registrationForm").submit();
 };
 
 var showErrorAuth = function(errors){

@@ -6,16 +6,8 @@ var Model = {
       func();
     },
 
-    removeItem : function(item){
-      delete this.items.slice(item);
-    },
-
     insertItem : function(item){
       this.items.push(item);
-    },
-
-    updateItem : function(oldItem, newItem){
-
     },
 
     checkItem: function (item) {

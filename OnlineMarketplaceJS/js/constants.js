@@ -1,4 +1,5 @@
 var Constants = {
+    //Parameters and messages
     lengthTitle: 0,
     lengthDescription: 0,
     warningShortTitle: "Title is too short.",

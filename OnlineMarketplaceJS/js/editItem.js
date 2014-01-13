@@ -23,8 +23,6 @@ var getItem = function(){
     }
 };
 
-
-
 var showErrors = function(errors){
      var warningText = "";
      for(var i = 0; i < errors.length; i++){
