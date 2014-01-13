@@ -15,7 +15,8 @@ var Constants = {
     minimumLengthOfPassword : "The minimum length of the password of 6 symbols.",
     formatPhone : "Phone doesn't correspond to a format: (xxx)xxx-xx-xx.",
     regPhone : /\([0-9]{3}\)[0-9]{3}-[0-9]{2}-[0-9]{2}/,
-
+    incorrectOfferType : "The rate should be number!",
+    smallOffer : "The offered sum is small. The sum must be greater than",
     //Files url
     upImg : "../imgs/up.png",
     downImg : "../imgs/down.png",

@@ -42,6 +42,22 @@ var checkUser = function(){
     }
 };
 
+function buy(uid, max) {
+    var result = false;
+    var bidElement = document.getElementById("bid" + uid);
+    var bid = Number(bidElement.value);
+    if (bid >= max) {
+        result = true;
+    } else {
+        if (isNaN(bid)) {
+            alert(Constants.incorrectOfferType);
+        } else {
+            alert(Constants.smallOffer + " " + max);
+        }
+    }
+    return result;
+}
+
 
 //View
 var showItems = function () {
@@ -92,7 +108,57 @@ var addItem = function(item){
     tr.appendChild(td);
 
     td = document.createElement('TD');
+    td.appendChild(getBidding(item));
     tr.appendChild(td);
+};
+
+function getBidding(item) {
+    var form = document.createElement("form");
+    form.method = "get";
+    form.action = "#";
+    var hidden = document.createElement("input");
+    hidden.type = "hidden";
+    hidden.name = "id";
+    hidden.value = item.UID;
+    form.appendChild(hidden);
+    var element;
+    var button = document.createElement("input");
+    button.type = "submit";
+    if (item.BuyNow) {
+        element = button;
+        element.className = "buybutton";
+        element.value = "Buy";
+    } else {
+        var bestPrice = document.createElement("input");
+        bestPrice.type = "hidden";
+        bestPrice.value = item.BestOffer;
+        element = document.createElement("div");
+        element.className = "biddiv";
+        var bid = document.createElement("input");
+        bid.name = "bid";
+        bid.id = "bid" + item.UID;
+        bid.type = "text";
+        element.appendChild(bid);
+        button.className = "bidbutton";
+        form.onsubmit = function() {
+            return buy(item.UID, maxPrice(item));
+        };
+        button.value = "Bid";
+        element.appendChild(button);
+    }
+    form.appendChild(element);
+    return form;
+};
+
+function maxPrice(item) {
+    var incr = item.BinInc;
+    var bestOffer = item.BestOffer + incr;
+    var price = item.StartPrice + incr;
+    var bestPrice = bestOffer;
+    if (bestPrice < price) {
+        bestPrice = price;
+    }
+    return bestPrice;
 };
 
 var setUserName = function(userName){
