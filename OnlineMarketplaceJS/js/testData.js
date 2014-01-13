@@ -36,6 +36,18 @@ var testData = [
         Bidder:"Pitt",
         TimeLeft:"21.05.2013",
         BuyNow:false
+    },
+    {
+        UID:4,
+        Title: "WW",
+        Description: "Car",
+        Seller:"Pup",
+        StartPrice: 13.5,
+        BinInc:0.5,
+        BestOffer:4,
+        Bidder:"Pitt",
+        TimeLeft:"21.05.2013",
+        BuyNow:true
     }
 ];
 
