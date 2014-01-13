@@ -1,10 +1,28 @@
 var tbody;
+var sortTitleElement;
+var sortOfferElement;
+var titleImg;
+var offerImg;
 
 //Controller
 var onLoad = function(){
   initView();
   getAllItems();
   checkUser();
+};
+
+var sortTitle = function(){
+  clearTable();
+  var order = getTypeTitleSort();
+  Model.sortItemsByTitle(order);
+  showItems();
+};
+
+var sortBestOffer = function(){
+  clearTable();
+  var order = getTypeOfferSort();
+  Model.sortItemsByBestOffer(order);
+  showItems();
 };
 
 var getAllItems = function(){
@@ -90,6 +108,45 @@ var setGuestUserParameters = function(){
 
 var initView = function(){
     tbody = document.getElementById("items");
+    sortTitleElement = document.getElementById("titleSort");
+    sortOfferElement = document.getElementById("offerSort");
+    titleImg = document.getElementById("imgTitle");
+    offerImg = document.getElementById("imgOffer");
 };
 
+var clearTable = function() {
+    var table = document.getElementById("items");
+    var rows = table.rows;
+    for (i = (rows.length-1); i > 0; i--) {
+        table.removeChild(rows[i]);
+    }
+};
+
+var getTypeTitleSort = function(){
+    if ((sortTitleElement.value == "updown") || (sortTitleElement.value == "down")){
+        sortTitleElement.value = "up";
+        titleImg.src = Constants.upImg;
+        offerImg.src = Constants.updownImg;
+        return "ask";
+    } else {
+        sortTitleElement.value = "down";
+        titleImg.src = Constants.downImg;
+        offerImg.src = Constants.updownImg;
+        return "desk";
+    }
+};
+
+var getTypeOfferSort = function(){
+    if((sortOfferElement.value == "updown") || (sortOfferElement.value == "down")) {
+        sortOfferElement.value = "up";
+        offerImg.src = Constants.upImg;
+        titleImg.src = Constants.updownImg;
+        return "ask";
+    } else {
+        sortOfferElement.value = "down";
+        offerImg.src = Constants.downImg;
+        titleImg.src = Constants.updownImg;
+        return "desk";
+    }
+};
 

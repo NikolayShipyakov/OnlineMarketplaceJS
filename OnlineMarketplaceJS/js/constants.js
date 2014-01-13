@@ -8,5 +8,10 @@ var Constants = {
     incorrectTime: "Incorrect format of the time left.",
     normalResult: "Item are added.",
     passwordLength : 2,
-    loginLength : 1
+    loginLength : 1,
+
+    //Files url
+    upImg : "../imgs/up.png",
+    downImg : "../imgs/down.png",
+    updownImg : "../imgs/updown.png"
 };

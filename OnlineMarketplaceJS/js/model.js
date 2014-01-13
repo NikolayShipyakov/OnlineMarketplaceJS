@@ -65,5 +65,35 @@ var Model = {
             errors.push(Constants.incorrectTime);
         }
         return errors;
+    },
+
+    sortItemsByTitle : function(orderBy){
+        this.items.sort(function(item1, item2){
+            if(item1.Title > item2.Title){
+                return 1;
+            } else if (item2.Title > item1.Title){
+                return -1;
+            } else {
+                return 0;
+            }
+        });
+        if(orderBy != null && "desk" == orderBy) {
+            this.items.reverse();
+        }
+    },
+
+    sortItemsByBestOffer : function(orderBy){
+        this.items.sort(function(item1, item2){
+            if(item1.BestOffer > item2.BestOffer){
+                return 1;
+            } else if (item2.BestOffer > item1.BestOffer){
+                return -1;
+            } else{
+                return 0;
+            }
+        });
+        if(orderBy != null && "desk" == orderBy) {
+            this.items.reverse();
+        }
     }
 };

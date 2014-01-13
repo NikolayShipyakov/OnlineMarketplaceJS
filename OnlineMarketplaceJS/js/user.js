@@ -1,10 +1,10 @@
 var User = {
     getUserLogin : function(){
-        return localStorage["login"];
+        return sessionStorage["login"];
     },
 
     setUserLogin : function(login){
-        localStorage["login"] = login;
+        sessionStorage["login"] = login;
     },
 
     checkUserData : function(userData){
