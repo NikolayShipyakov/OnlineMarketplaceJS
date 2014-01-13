@@ -53,7 +53,7 @@ var testData = [
 
 var setTestData = function(){
    for(var i = 0; i < testData.length; i++){
-      Model.insertItem(testData[i]);
+      Model.insertTestItem(testData[i]);
    }
 };
 
@@ -61,7 +61,7 @@ var setUserItemsTestData = function(){
     var login = User.getUserLogin();
     for(var i = 0; i < testData.length; i++){
         if(testData[i].Seller == login || testData[i].Bidder == login){
-            Model.insertItem(testData[i]);
+            Model.insertTestItem(testData[i]);
         }
     }
 };

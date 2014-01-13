@@ -3,11 +3,15 @@ var save = function(){
     var item = getItem();
     var errors = Model.checkItem(item);
     if(errors.length == 0){
-      //Model.insertItem(item);
+        Model.insertItem(item, function(){toAllItems()});
     } else {
         showErrors(errors);
     }
 
+};
+
+var toAllItems = function() {
+    window.location.href = "showItems.html";
 };
 
 //View

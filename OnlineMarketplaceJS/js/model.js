@@ -6,8 +6,13 @@ var Model = {
       func();
     },
 
-    insertItem : function(item){
+    insertItem : function(item, func){
       this.items.push(item);
+      func();
+    },
+
+    insertTestItem : function(item){
+       this.items.push(item);
     },
 
     checkItem: function (item) {
