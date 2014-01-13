@@ -20,6 +20,35 @@ var User = {
             errors.push("The minimum length of Password is "+ Constants.passwordLength);
         }
         return errors;
+    },
+
+    valideUserData : function(userData){
+        var name = userData.name;
+        var adress = userData.adress;
+        var phone = userData.phone;
+        var login = userData.login;
+        var password = userData.password;
+        var repassword = userData.repassword;
+        var errors = [];
+        if ((name == "") || (adress == "") || (phone == "") || (login == "")
+            || (password == "") || (repassword == "")) {
+            errors.push(Constants.emptysFields);
+        }
+        if ((name == login) && (name != "")) {
+            errors.push(Constants.concideNameLogin);
+        }
+        if (password != repassword) {
+            errors.push(Constants.noRepeartPassword);
+        }
+        if (password.length < Constants.passwordLength) {
+            errors.push(Constants.minimumLengthOfPassword);
+        }
+        var reg = new RegExp(Constants.regPhone);
+        if (!reg.test(phone)) {
+            errors.push(Constants.formatPhone);
+        }
+
+        return errors;
     }
 
-}
+};
