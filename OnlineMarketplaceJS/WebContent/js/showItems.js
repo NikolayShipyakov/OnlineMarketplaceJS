@@ -4,6 +4,7 @@ var sortOfferElement;
 var titleImg;
 var offerImg;
 
+// Getting ajax request
 var getXmlHttp = function () {
     var xmlhttp;
     if (window.XMLHttpRequest)
@@ -19,6 +20,7 @@ var getXmlHttp = function () {
 
 
 //Controller
+// Loading of page listener
 var onLoad = function(){
   setTestData();//Заполнение тестовыми данными
   initView();
@@ -26,6 +28,7 @@ var onLoad = function(){
   checkUser();
 };
 
+// Sort title listener
 var sortTitle = function(){
   clearTable();
   var order = getTypeTitleSort();
@@ -33,11 +36,27 @@ var sortTitle = function(){
   showItems();
 };
 
+// Sort best offer listener
 var sortBestOffer = function(){
   clearTable();
   var order = getTypeOfferSort();
   Model.sortItemsByBestOffer(order);
   showItems();
+};
+
+// Search listener
+var search = function(){
+    clearTable();
+    var parameters = getSearchParameters();
+    setTestDataByParameter(parameters.field, parameters.value);
+    getAllItems();
+};
+
+// Show all items listener
+var showAllItems = function(){
+    clearTable();
+    setTestData();
+    getAllItems();
 };
 
 var getAllItems = function(){
@@ -84,20 +103,8 @@ var buy = function(uid, price){
     req.send();
 };
 
-var search = function(){
-    clearTable();
-    var parameters = getSearchParameters();
-    setTestDataByParameter(parameters.field, parameters.value);
-    getAllItems();
-};
-
-var showAllItems = function(){
-    clearTable();
-    setTestData();
-    getAllItems();
-};
-
 //View
+// Show all items from model
 var showItems = function () {
     var items = Model.items;
     var user = User.getUserLogin();
@@ -106,6 +113,7 @@ var showItems = function () {
     }
 };
 
+// Add row with item to table
 var addItem = function(item, login){
     var tr = document.createElement('TR');
     tbody.appendChild(tr);
@@ -153,6 +161,7 @@ var addItem = function(item, login){
     tr.appendChild(td);
 };
 
+// Add "Buy" button buy item
 var getBidding = function(item) {
     var form = document.createElement("div");
     var hidden = document.createElement("input");
@@ -203,10 +212,12 @@ var maxPrice = function(item) {
     return bestPrice;
 };
 
+// Set user name in header
 var setUserName = function(userName){
     document.getElementById("user").innerHTML = userName;
 };
 
+// Set guest view
 var setGuestUserParameters = function(){
     document.getElementById("myitems").hidden = true;
     document.getElementById("sell").hidden = true;
@@ -215,6 +226,7 @@ var setGuestUserParameters = function(){
     log.href = "login.html";
 };
 
+// Init elements
 var initView = function(){
     tbody = document.getElementById("items");
     sortTitleElement = document.getElementById("titleSort");
