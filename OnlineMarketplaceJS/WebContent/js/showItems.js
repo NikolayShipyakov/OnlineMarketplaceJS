@@ -100,12 +100,13 @@ var showAllItems = function(){
 //View
 var showItems = function () {
     var items = Model.items;
+    var user = User.getUserLogin();
     for (var i = 0; i < items.length; i++) {
-        addItem(items[i]);
+        addItem(items[i], user);
     }
 };
 
-var addItem = function(item){
+var addItem = function(item, login){
     var tr = document.createElement('TR');
     tbody.appendChild(tr);
 
@@ -146,7 +147,9 @@ var addItem = function(item){
     tr.appendChild(td);
 
     td = document.createElement('TD');
-    td.appendChild(getBidding(item));
+    if(item.Seller != login){
+       td.appendChild(getBidding(item));
+    }
     tr.appendChild(td);
 };
 
