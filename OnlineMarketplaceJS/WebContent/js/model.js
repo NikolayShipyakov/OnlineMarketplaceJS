@@ -1,3 +1,4 @@
+// Items data
 var Model = {
     items : [],
 
@@ -15,6 +16,7 @@ var Model = {
        this.items.push(item);
     },
 
+    // Check item fields
     checkItem: function (item) {
         var title = item.Title;
         var description = item.Description;
@@ -36,8 +38,7 @@ var Model = {
             if (massTime.length == 2) {
                 var hours = Number(massTime[0]);
                 var min = Number(massTime[1]);
-                timeGood = ((isNaN(hours) == false) && (isNaN(min) == false)) ? true
-                    : false;
+                timeGood = ((isNaN(hours) == false) && (isNaN(min) == false)) ? true : false;
                 if (hours < 0 || min < 0 || min > 60) {
                     timeGood = false;
                 }
@@ -64,6 +65,7 @@ var Model = {
         return errors;
     },
 
+    // Sort items by title
     sortItemsByTitle : function(orderBy){
         this.items.sort(function(item1, item2){
             if(item1.Title > item2.Title){
@@ -79,6 +81,7 @@ var Model = {
         }
     },
 
+    // Sort items by best offer
     sortItemsByBestOffer : function(orderBy){
         this.items.sort(function(item1, item2){
             if(item1.BestOffer > item2.BestOffer){
