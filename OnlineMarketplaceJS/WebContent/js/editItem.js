@@ -18,6 +18,14 @@ var buyCheck = function(){
     changeBidIncrStatus();
 };
 
+var reset = function(){
+    clearAllFields();
+};
+
+var back = function() {
+    toAllItems();
+};
+
 //View
 var getItem = function(){
     var form =document.getElementById("dataForm");
@@ -42,5 +50,22 @@ var showErrors = function(errors){
          warningText += errors[i] + "</br>"
      }
      document.getElementById("resultop").innerHTML = warningText;
+};
+
+var clearAllFields = function() {
+    var title = document.getElementById("title");
+    var description = document.getElementById("description");
+    var startPrice = document.getElementById("startprice");
+    var bidIncr = document.getElementById("bidincrement");
+    var timeLeft = document.getElementById("timeleft");
+    var buyItNow = document.getElementById("buyitnow");
+    title.value = "";
+    description.value = "";
+    startPrice.value = "";
+    bidIncr.value = "";
+    bidIncr.disabled = false;
+    timeLeft.value = "";
+    timeLeft.disabled = false;
+    buyItNow.checked = false;
 };
 
