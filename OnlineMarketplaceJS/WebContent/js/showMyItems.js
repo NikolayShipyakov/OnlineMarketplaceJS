@@ -5,11 +5,28 @@ var titleImg;
 var offerImg;
 
 //Controller
+// Loading of page listener
 var onLoad = function(){
     setUserItemsTestData();//Заполнение тестовыми данными
     checkUser();
     initView();
     getAllItems();
+};
+
+// Sort title listener
+var sortTitle = function(){
+    clearTable();
+    var order = getTypeTitleSort();
+    Model.sortItemsByTitle(order);
+    showItems();
+};
+
+// Sort best offer listener
+var sortBestOffer = function(){
+    clearTable();
+    var order = getTypeOfferSort();
+    Model.sortItemsByBestOffer(order);
+    showItems();
 };
 
 var checkUser = function(){
@@ -28,21 +45,8 @@ var getAllItems = function(){
     Model.getItems(func);
 };
 
-var sortTitle = function(){
-    clearTable();
-    var order = getTypeTitleSort();
-    Model.sortItemsByTitle(order);
-    showItems();
-};
-
-var sortBestOffer = function(){
-    clearTable();
-    var order = getTypeOfferSort();
-    Model.sortItemsByBestOffer(order);
-    showItems();
-};
-
 //View
+// Init elements
 var initView = function(){
     tbody = document.getElementById("items");
     sortTitleElement = document.getElementById("sortTitle");
@@ -51,11 +55,12 @@ var initView = function(){
     offerImg = document.getElementById("imgOffer");
 };
 
+// Set user name in header
 var setUserName = function(userName){
     document.getElementById("user").innerHTML = userName;
 };
 
-//View
+// Add all items in table
 var showItems = function () {
     var items = Model.items;
     for (var i = 0; i < items.length; i++) {
