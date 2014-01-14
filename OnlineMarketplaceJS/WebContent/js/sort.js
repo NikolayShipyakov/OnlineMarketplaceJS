@@ -1,3 +1,4 @@
+// Getting order by Title sort
 var getTypeTitleSort = function(){
     if ((sortTitleElement.value == "updown") || (sortTitleElement.value == "down")){
         sortTitleElement.value = "up";
@@ -12,6 +13,7 @@ var getTypeTitleSort = function(){
     }
 };
 
+// Getting order by Best offer sort
 var getTypeOfferSort = function(){
     if((sortOfferElement.value == "updown") || (sortOfferElement.value == "down")) {
         sortOfferElement.value = "up";
