@@ -7,20 +7,13 @@ var offerImg;
 var getXmlHttp = function () {
     var xmlhttp;
     if (window.XMLHttpRequest)
-    {// code for IE7+, Firefox, Chrome, Opera, Safari
+    {
         xmlhttp=new XMLHttpRequest();
     }
     else
-    {// code for IE6, IE5
+    {
         xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
     }
-    xmlhttp.onreadystatechange=function()
-    {
-        if (xmlhttp.readyState==4 && xmlhttp.status==200)
-        {
-            document.getElementById("myDiv").innerHTML=xmlhttp.responseText;
-        }
-    };
     return xmlhttp;
 };
 
@@ -63,21 +56,11 @@ var checkUser = function(){
     }
 };
 
-function buy(uid, max) {
+function checkAndBuy(uid, max) {
     var bidElement = document.getElementById("bid" + uid);
     var bid = Number(bidElement.value);
     if (bid >= max) {
-        var req = getXmlHttp();
-        req.onreadystatechange = function () {
-            if (req.readyState == 4) {
-                if (req.status == 200) {
-                    alert("Ответ сервера: " + req.responseText);
-
-                }
-            }
-        };
-        req.open('POST', 'http:\\lala?' + uid + "&price" + bid, true);
-        req.send();
+        buy(uid, bid);
     } else {
         if (isNaN(bid)) {
             alert(Constants.incorrectOfferType);
@@ -86,6 +69,20 @@ function buy(uid, max) {
         }
     }
 }
+
+function buy(uid, price){
+    var req = getXmlHttp();
+    req.onreadystatechange = function () {
+        if (req.readyState == 4) {
+            if (req.status == 200) {
+                alert("Ответ сервера: " + req.responseText);
+
+            }
+        }
+    };
+    req.open('POST', 'http:\\lala?uid=' + uid + "&price=" + price, true);
+    req.send();
+};
 
 
 //View
@@ -155,6 +152,9 @@ function getBidding(item) {
         element = button;
         element.className = "buybutton";
         element.value = "Buy";
+        button.onclick = function(){
+            buy(item.UID, item.StartPrice);
+        };
     } else {
         var bestPrice = document.createElement("input");
         bestPrice.type = "hidden";
@@ -168,7 +168,7 @@ function getBidding(item) {
         element.appendChild(bid);
         button.className = "bidbutton";
         button.onclick = function() {
-            buy(item.UID, maxPrice(item));
+            checkAndBuy(item.UID, maxPrice(item));
         };
         button.value = "Bid";
         element.appendChild(button);
