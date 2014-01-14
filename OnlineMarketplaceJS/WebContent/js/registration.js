@@ -1,4 +1,5 @@
 //Controller
+// Submit button listener
 var validUserData = function(){
     var userData = getUserData();
     var errors = User.valideUserData(userData);
@@ -11,15 +12,18 @@ var validUserData = function(){
     }
 };
 
+// Reset button listener
 var reset = function(){
     clearAllFields();
 };
 
+// Back button listener
 function back() {
     window.location = "login.html";
 }
 
 //View
+// Getting data from fields with user data
 var getUserData = function(){
     var name = document.getElementById("name").value;
     var adress = document.getElementById("adress").value;
@@ -37,6 +41,7 @@ var getUserData = function(){
     }
 };
 
+// Show error messages
 var showErrorRegistration = function(errors){
     var warningText = "";
     for(var i = 0; i < errors.length; i++){
@@ -45,6 +50,7 @@ var showErrorRegistration = function(errors){
     document.getElementById("warningtext").innerHTML = warningText;
 };
 
+// Clear all fields
 var clearAllFields = function(){
     document.getElementById("name").value = "";
     document.getElementById("adress").value = "";
