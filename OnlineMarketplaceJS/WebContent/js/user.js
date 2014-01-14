@@ -1,3 +1,4 @@
+// User info
 var User = {
     getUserLogin : function(){
         return sessionStorage["login"];
@@ -7,6 +8,7 @@ var User = {
         sessionStorage["login"] = login;
     },
 
+    // Check user login / password
     checkUserData : function(userData){
         var login = userData.login;
         var password = userData.password;
@@ -22,6 +24,7 @@ var User = {
         return errors;
     },
 
+    // Check user data
     valideUserData : function(userData){
         var name = userData.name;
         var adress = userData.adress;
