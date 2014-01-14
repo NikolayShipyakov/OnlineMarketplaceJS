@@ -24,22 +24,19 @@
 	<div class="head">
 		<label>Online marketplace</label>
 	</div>
-	<form id="searchForm" method="get" action="showItems.html">
-		<div class="search">
-			<label class="parameters">Search parameters</label> <br /> <label
-				class="keyword">Keyword:</label>
-		</div>
-		<div class="buttonssearch">
-			<input id="keyword" type="text" name="keyword" class="textsearch" />
-			<select id="typeSearch" class="typesearch" name="typeSearch">
-				<option>Title</option>
-				<option>Description</option>
-			</select> <input type="button" value="Search" onclick="search();" />
-		</div>
-	</form>
+	<div class="search">
+		<label class="parameters">Search parameters</label> <br /> <label class="keyword">Keyword:</label>
+	</div>
+	<div class="buttonssearch">
+		<input id="keyword" type="text" name="keyword" class="textsearch" />
+		<select id="typeSearch" class="typesearch" name="typeSearch">
+			<option>Title</option>
+			<option>Description</option>
+		</select> <input type="button" value="Search" onclick="search();" />
+	</div>
 
 	<div class="links">
-		<a href="#">Show All Items</a> <a id="myitems" href="showMyItems.html">Show My
+		<a href="#" onclick="showAllItems()">Show All Items</a> <a id="myitems" href="showMyItems.html">Show My
 			Items</a> <a id="sell" href="editItem.html">Sell</a>
 	</div>
 	<div class="table">

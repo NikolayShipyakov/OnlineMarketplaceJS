@@ -52,9 +52,28 @@ var testData = [
 ];
 
 var setTestData = function(){
+    Model.items = [];
    for(var i = 0; i < testData.length; i++){
       Model.insertTestItem(testData[i]);
    }
+};
+
+var setTestDataByParameter = function(field, value){
+    Model.items = [];
+    if(field == "Title"){
+        for(var i = 0; i < testData.length; i++){
+            if(testData[i].Title.indexOf(value) >= 0){
+                Model.insertTestItem(testData[i]);
+            }
+        }
+    }
+    if(field == "Description"){
+        for(i = 0; i < testData.length; i++){
+            if(testData[i].Description.indexOf(value) >= 0){
+                Model.insertTestItem(testData[i]);
+            }
+        }
+    }
 };
 
 var setUserItemsTestData = function(){

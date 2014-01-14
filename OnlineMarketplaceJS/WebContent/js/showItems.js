@@ -56,7 +56,7 @@ var checkUser = function(){
     }
 };
 
-function checkAndBuy(uid, max) {
+var checkAndBuy = function(uid, max) {
     var bidElement = document.getElementById("bid" + uid);
     var bid = Number(bidElement.value);
     if (bid >= max) {
@@ -68,9 +68,9 @@ function checkAndBuy(uid, max) {
             alert(Constants.smallOffer + " " + max);
         }
     }
-}
+};
 
-function buy(uid, price){
+var buy = function(uid, price){
     var req = getXmlHttp();
     req.onreadystatechange = function () {
         if (req.readyState == 4) {
@@ -84,6 +84,18 @@ function buy(uid, price){
     req.send();
 };
 
+var search = function(){
+    clearTable();
+    var parameters = getSearchParameters();
+    setTestDataByParameter(parameters.field, parameters.value);
+    getAllItems();
+};
+
+var showAllItems = function(){
+    clearTable();
+    setTestData();
+    getAllItems();
+};
 
 //View
 var showItems = function () {
@@ -138,7 +150,7 @@ var addItem = function(item){
     tr.appendChild(td);
 };
 
-function getBidding(item) {
+var getBidding = function(item) {
     var form = document.createElement("div");
     var hidden = document.createElement("input");
     hidden.type = "hidden";
@@ -177,7 +189,7 @@ function getBidding(item) {
     return form;
 };
 
-function maxPrice(item) {
+var maxPrice = function(item) {
     var incr = item.BinInc;
     var bestOffer = item.BestOffer + incr;
     var price = item.StartPrice + incr;
@@ -213,6 +225,13 @@ var clearTable = function() {
     var rows = table.rows;
     for (i = (rows.length-1); i > 0; i--) {
         table.removeChild(rows[i]);
+    }
+};
+
+var getSearchParameters = function(){
+    return {
+        field : document.getElementById("typeSearch").value,
+        value : document.getElementById("keyword").value
     }
 };
 
