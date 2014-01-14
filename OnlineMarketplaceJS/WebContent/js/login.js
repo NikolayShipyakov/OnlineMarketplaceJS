@@ -1,4 +1,5 @@
 //Controller
+// Sign button listener
 var sign = function(){
     var userInfo = getLoginPassword();
     var errors = User.checkUserData(userInfo);
@@ -15,6 +16,7 @@ var submit = function (){
 };
 
 //View
+// Getting authorisation data
 var getLoginPassword = function(){
     var login = document.getElementById("login").value;
     var pass = document.getElementById("password").value;
@@ -24,6 +26,7 @@ var getLoginPassword = function(){
     }
 };
 
+// Show error messages
 var showErrorAuth = function(errors){
     var warningText = "";
     for(var i = 0; i < errors.length; i++){
