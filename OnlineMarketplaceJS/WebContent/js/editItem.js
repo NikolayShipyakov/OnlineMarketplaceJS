@@ -14,6 +14,10 @@ var toAllItems = function() {
     window.location.href = "showItems.html";
 };
 
+var buyCheck = function(){
+    changeBidIncrStatus();
+};
+
 //View
 var getItem = function(){
     var form =document.getElementById("dataForm");
@@ -25,6 +29,11 @@ var getItem = function(){
         BuyNow:form.buyitnow.checked,
         TimeLeft:form.timeleft.value
     }
+};
+
+var changeBidIncrStatus = function() {
+    var bidIncr = document.getElementById("bidincrement");
+    bidIncr.disabled = (bidIncr.disabled == false) ? true : false;
 };
 
 var showErrors = function(errors){
